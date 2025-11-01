@@ -6,8 +6,7 @@ public class Shop
 {
     public static void main (String[] args)
     {
-        ArrayList<Item> cart = new ArrayList();
-        Item item;
+        ArrayList<Item> cart = new ArrayList<>();
         String itemName;
         double itemPrice;
         int quantity;
@@ -21,8 +20,21 @@ public class Shop
             itemPrice = scan.nextDouble();
             System.out.print ("Enter the quantity: ");
             quantity = scan.nextInt();
-// *** create a new item and add it to the cart
+            scan.nextLine();
+
+            // *** create a new item and add it to the cart
+            Item newItem = new Item(itemName,itemPrice,quantity);
+            cart.add(newItem);
+
             // *** print the contents of the cart object using println
+            System.out.println("Content of the cart");
+            double sum=0.0;
+            for(Item i: cart){
+                System.out.println(i);
+                sum+= i.getPrice()*i.getQuantity();
+            }
+            System.out.printf("Total price : $%.2f\n",sum);
+            System.out.println();
             System.out.print ("Continue shopping (y/n)? ");
             keepShopping = scan.nextLine();
         }
